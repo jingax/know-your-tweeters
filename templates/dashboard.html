@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title id ="title"></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'cssd/sb-admin-2.min.css' %}" rel="stylesheet" />
+<style>
+.modal-backdrop
+{
+    opacity:1.0 !important;
+     background-repeat: no-repeat;
+  background-size: 100%;
+}
+{% comment %} .modal-body {
+   background-image: url(path/to/image);
+} {% endcomment %}
+.modal-backdrop {
+   background-image: url("https://source.unsplash.com/random");
+}
+</style>
+</head>
+
+<body id="page-top">
+
+<div class="modal fade"  id="load" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+       <center>
+      <img src="{% static 'assets/loading.gif' %}"  width="110" height="110">
+       <br><p class="mt-1">Please wait while data is being collected!</p>
+      </center>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade"  id="error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+       <center>
+      <img src="{% static 'assets/erro.gif' %}"  width="110" height="110">
+       <br><p class="mt-1">Some Error Occured!</p>
+       <a href="http://127.0.0.1:8000/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Go back to Home Page</a>
+      </center>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+               
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid mt-3">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Results</h1>
+                        <a href="http://127.0.0.1:8000/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Analyze Another User</a>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Account Overview</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                    <div class="col-lg-2 col-sm-4 col-md-4">
+                                    <img id="main_dp" class="center" style="width:90%;border-radius:50%;" src="https://pbs.twimg.com/profile_images/1323964021565845506/pbUtCEFu_400x400.jpg" alt="...">
+                                    </div>
+                                    
+                                        
+                                            <div class="col-lg-4 col-sm-4">
+                                                <h3 id="user_name" class="h3 m-0  text-primary">Aastik Solanki</h3>
+                                                <h6 id="screen_name" class="h6 m-0  text-dark">@AastikSolanki</h6>
+                                                <p id="desc" class="mt-1 text-dark" style="font-size: 14px;">About Aastik the great About Aastik the great About Aastik the great About Aastik the great About Aastik the great About Aastik the great </p>
+                                                <a target="_blank" id="profile_link" rel="nofollow" href="">Link to Profile &rarr;</a>
+
+                                            </div>
+                                            <div class="col-lg-2 col-sm-12 text-center">
+                                                <h3 class="h3 m-0  text-primary">Followers</h3>
+                                                <h1 id="followers" class="h1 mt-3  text-success">54</h1>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-12 text-center">
+                                                <h3 class="h3 m-0  text-primary">Following</h3>
+                                                <h1 id="following" class="h1 mt-3  text-info">19</h1>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-12 text-center">
+                                                <h3 class="h3 m-0  text-primary">Joined</h3>
+                                                <h1 id="created_at" class="h1 mt-3  text-warning">Oct 2020</h1>
+                                            </div>
+                                        
+                                    
+                                    
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- Approach -->
+                            
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Personal Confidene Index</div>
+                                            <div id="per_index" class="h5 mb-0 font-weight-bold text-gray-800">0.99</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                Cumilative Confidence Index</div>
+                                            <div id="cum_index" class="h5 mb-0 font-weight-bold text-gray-800">0.76</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Retweet Percentage 
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div id="retweet_perc" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">78%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div id="retweet_perc_slide" class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 78%" aria-valuenow="78" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-dark shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                Number of Tweets</div>
+                                            <div id="NoTweet" class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-secondary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                Keywords per Tweet</div>
+                                            <div id="KPTweet" class="h5 mb-0 font-weight-bold text-gray-800">3.5</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Number of Clusters</div>
+                                            <div id="clusters" class="h5 mb-0 font-weight-bold text-gray-800">9</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Tweets Per Cluster 
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div id ="TPCluster" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">8</div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Number of Tweets Per Day</div>
+                                            <div id="TweetPDay" class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Follower Index Distribution</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Follower Distribution</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Genuine
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-danger"></i> Collusive
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-warning"></i> Unsure
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Illustrations -->
+                            <div id="follower_list" class="row">
+                                
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Content Column -->
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Week Distribution</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="small font-weight-bold">Sunday <span id="sun"
+                                            class="float-right">20%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div id="sun_bar" class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Monday <span id="mon"
+                                            class="float-right">40%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div id="mon_bar"class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Tuesday <span id="tue"
+                                            class="float-right">60%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div id="tue_bar" class="progress-bar" role="progressbar" style="width: 60%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Wednesday <span id="wed"
+                                            class="float-right">80%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div  id="wed_bar" class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Thrusday <span id="thru"
+                                            class="float-right">20%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div id="thru_bar" class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Friday <span id="fri"
+                                            class="float-right">20%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div id="fri_bar" class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    
+                                    <h4 class="small font-weight-bold">Saturday <span id="sat"
+                                            class="float-right">5%</span></h4>
+                                    <div class="progress">
+                                        <div id="sat_bar" class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <!-- Approach -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Tips to use!</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
+                                        CSS bloat and poor page performance. Custom CSS classes are used to create
+                                        custom components and custom utility classes.</p>
+                                    <p class="mb-0">Before working with this theme, you should become familiar with the
+                                        Bootstrap framework, especially the utility classes.</p>
+                                </div>
+                            </div>
+
+
+                         
+
+                        </div>
+
+                        
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% csrf_token %}
+    
+    <!-- Bootstrap core JavaScript-->
+    <script type="text/javascript" src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script type="text/javascript" src="{% static 'vendor/jquery-easing/jquery.easing.min.js'%}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script type="text/javascript" src="{% static 'jsd/sb-admin-2.min.js'%}"></script>
+
+    <!-- Page level plugins -->
+    <script type="text/javascript" src="{% static 'vendor/chart.js/Chart.min.js'%}"></script>
+
+    <!-- Page level custom scripts -->
+    <script >
+  
+  function show_graph(graph_values){
+        // Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
+function number_format(number, decimals, dec_point, thousands_sep) {
+  // *     example: number_format(1234.56, 2, ',', ' ');
+  // *     return: '1 234,56'
+  number = (number + '').replace(',', '').replace(' ', '');
+  var n = !isFinite(+number) ? 0 : +number,
+    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+    s = '',
+    toFixedFix = function(n, prec) {
+      var k = Math.pow(10, prec);
+      return '' + Math.round(n * k) / k;
+    };
+  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+  if (s[0].length > 3) {
+    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+  }
+  if ((s[1] || '').length < prec) {
+    s[1] = s[1] || '';
+    s[1] += new Array(prec - s[1].length + 1).join('0');
+  }
+  return s.join(dec);
+}
+
+// Area Chart Example
+var ctx = document.getElementById("myAreaChart");
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["0.0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0"],
+    datasets: [{
+      label: "Frequency",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: [parseInt(graph_values[0]),parseInt(graph_values[1]),parseInt(graph_values[2]),parseInt(graph_values[3]),parseInt(graph_values[4]),parseInt(graph_values[5]),parseInt(graph_values[6]),parseInt(graph_values[7]),parseInt(graph_values[8]),parseInt(graph_values[9]),parseInt(graph_values[10])],
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 10
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return  number_format(value);
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      intersect: false,
+      mode: 'index',
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+        }
+      }
+    }
+  }
+});
+  }
+    </script>
+    <script >
+   
+function show_pie(pie_values){   
+        // Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
+// Pie Chart Example
+var ctx = document.getElementById("myPieChart");
+var myPieChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ["Genuine", "Collusive", "Unsure"],
+    datasets: [{
+      data: [parseInt(pie_values[0]),parseInt(pie_values[1]),parseInt(pie_values[2])],
+      backgroundColor: ['#1cc88a', '#e74a3b', '#f6c23e'],
+      hoverBackgroundColor: ['#07a36b', '#cc2717', '#e3ad23'],
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+  },
+});
+}
+    </script>
+    <script>
+    function final_f(){var token = document.getElementsByName("csrfmiddlewaretoken")[0].value; 
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    sn = urlParams.get('sn');
+    console.log(sn);
+    $("#title").html(sn+' - Dashboard');
+    if(sn==''){
+                $("#error").modal('show');
+                return;
+            }
+    
+                $("#load").modal('show');
+            
+    $.ajax({
+                url: "http://{{ request.get_host }}/neural/",
+                type: 'POST',
+                headers: {'X-CSRFToken': token},
+                data: { sn: sn },
+                success: function(data){
+                    var data = data.split("_flag_sep_esc_");
+                    console.log(data);
+                    if(data.length!=22){
+                        $("#load").modal('hide');
+                        $("#error").modal('show');
+                        return;
+                    }
+                    if(data[0]=="http://abs.twimg.com/sticky/default_profile_images/default_profile.png")
+                            data[0]="{% static 'assets/default_profile.png' %}";
+                    $("#main_dp").attr("src",data[0]);
+                    $("#user_name").html(data[1]);
+                    $("#desc").html(data[2]);
+                    if(data[2]=="")
+                        $("#desc").html("No description");
+                    $("#followers").html(data[3]);
+                    $("#following").html(data[4]);
+                    var created_at = data[5];
+                    created_at = created_at.split("-");
+                    var mod = " "+created_at[0].substring(2, 4);
+                    if(created_at[1]=='01')
+                        mod = "Jan" + mod;
+                    else if(created_at[1]=='02')
+                        mod = "Feb" + mod;
+                    else if(created_at[1]=='03')
+                        mod = "Mar" + mod;
+                    else if(created_at[1]=='04')
+                        mod = "Apr" + mod;
+                    else if(created_at[1]=='05')
+                        mod = "May" + mod;
+                    else if(created_at[1]=='06')
+                        mod = "June" + mod;
+                    else if(created_at[1]=='07')
+                        mod = "July" + mod;
+                    else if(created_at[1]=='08')
+                        mod = "Aug"  + mod;
+                    else if(created_at[1]=='09')
+                        mod = "Sept" + mod;
+                    else if(created_at[1]=='10')
+                        mod = "Oct" + mod;
+                    else if(created_at[1]=='11')
+                        mod = "Nov" + mod;
+                    else if(created_at[1]=='12')
+                        mod = "Dec" + mod;
+                     
+                    $("#created_at").html(mod);
+                    $("#per_index").html(data[6]);
+                    $("#cum_index").html(data[7]);
+                    $("#retweet_perc").html(data[8]+"%");
+                    $("#retweet_perc_slide").attr("style","width: "+data[8]+"%");
+                    $("#retweet_perc_slide").attr("aria-valuenow",data[8]);
+                    
+                    $("#NoTweet").html(data[9]);
+                    $("#KPTweet").html(data[10]);
+                    $("#clusters").html(data[11]);
+                    $("#TPCluster").html(data[12]);
+                    $("#TweetPDay").html(data[13]);
+                    var graph_values = data[14].split("##");
+                    console.log(graph_values);
+                    show_graph(graph_values);
+                    var pie_values = data[15].split("##");
+                    console.log(pie_values);
+                    show_pie(pie_values);
+                    var week_values = data[16].split("##");
+                    console.log(week_values);
+                    $("#sun").html(week_values[1]+"%");
+                    $("#sun_bar").attr("style","width: "+week_values[1]+"%");
+                    $("#sun_bar").attr("aria-valuenow",week_values[1]);
+                    $("#mon").html(week_values[2]+"%");
+                    $("#mon_bar").attr("style","width: "+week_values[2]+"%");
+                    $("#mon_bar").attr("aria-valuenow",week_values[2]);
+                    $("#tue").html(week_values[3]+"%");
+                    $("#tue_bar").attr("style","width: "+week_values[3]+"%");
+                    $("#tue_bar").attr("aria-valuenow",week_values[3]);
+                    $("#wed").html(week_values[4]+"%");
+                    $("#wed_bar").attr("style","width: "+week_values[4]+"%");
+                    $("#wed_bar").attr("aria-valuenow",week_values[4]);
+                    $("#thru").html(week_values[5]+"%");
+                    $("#thru_bar").attr("style","width: "+week_values[5]+"%");
+                    $("#thru_bar").attr("aria-valuenow",week_values[5]);
+                    $("#fri").html(week_values[6]+"%");
+                    $("#fri_bar").attr("style","width: "+week_values[6]+"%");
+                    $("#fri_bar").attr("aria-valuenow",week_values[6]);
+                    $("#sat").html(week_values[0]+"%");
+                    $("#sat_bar").attr("style","width: "+week_values[0]+"%");
+                    $("#sat_bar").attr("aria-valuenow",week_values[0]);
+                    var un = data[17].split("_list_sep_esc_");
+                    var res = data[18].split("_list_sep_esc_");
+                    var sn = data[19].split("_list_sep_esc_");
+                    var dp = data[20].split("_list_sep_esc_");
+                    var un_len = un.length-1;
+                    var i;
+                    var out = "";
+                    var color_b;
+                    for(i=0;i<un_len;++i){
+                        if(dp[0]=="http://abs.twimg.com/sticky/default_profile_images/default_profile.png")
+                            dp[0]="{% static 'assets/default_profile.png' %}";
+                    
+                        if(parseFloat(res[i])>=0.7)
+                            color_b="success";
+                        else if(parseFloat(res[i])<=0.4)
+                            color_b="danger";
+                        else 
+                            color_b="warning";
+                        
+                        out = out + '<div class="col-lg-6 mb-4"> <div class="card bg-'+color_b+' text-white shadow"><div class="card-body"><div style="float:left;">'+un[i]+' - Index : '+res[i]+'<div class="text-white-50 small">@'+sn[i]+'</div></div><div style="float:right;"><img style="width:50px;border-radius:50%;" src="'+dp[i]+'"></div></div></div></div>';
+                    }
+                    if(un_len==0){
+                        out = '<div class="col-lg-12 mb-4"><div class="card bg-light text-black shadow"><div class="card-body">No Followers Found<div class="text-black-50 small">This section shows Analysis of followers</div></div></div></div>'
+                    }
+                    console.log(out);
+                    $("#follower_list").html(out);
+                    $("#screen_name").html("@"+urlParams.get('sn'));
+                    $("#profile_link").attr("href","https://twitter.com/"+urlParams.get('sn'));
+                    $("#load").modal('hide');
+
+                } 
+            });}
+            final_f();
+    </script>
+
+</body>
+
+</html>
