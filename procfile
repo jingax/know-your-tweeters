@@ -1,0 +1,1 @@
+web: gunicorn knowyourtweeter.wsgi --log-file -
